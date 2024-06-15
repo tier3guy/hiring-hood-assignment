@@ -20,23 +20,22 @@ export default function useGetWeatherData() {
             setError(null);
             setData(null);
 
-            const URL = `http://localhost:3000/api/get-weather-data`;
-            try {
-                const resp = await (
-                    await fetch(URL, {
-                        method: "POST",
-                        headers: {
-                            "content-type": "application/json",
-                        },
-                        body: JSON.stringify({
-                            lat: latitude,
-                            lon: longitude,
-                        }),
-                    })
-                ).json();
+            const url = `https://open-weather13.p.rapidapi.com/city/latlon/${latitude}/${longitude}`;
+            const options = {
+                method: "GET",
+                hostname: "open-weather13.p.rapidapi.com",
+                headers: {
+                    "x-rapidapi-key": process.env.NEXT_PUBLIC_X_RAPID_API_KEY!,
+                    "x-rapidapi-host":
+                        process.env.NEXT_PUBLIC_X_RAPID_API_HOST!,
+                },
+            };
 
-                setData(resp?.data);
-                setError(resp?.error);
+            try {
+                const resp = await fetch(url, options);
+                const data = await resp.json();
+
+                setData(data);
             } catch (error: any) {
                 setError({ message: error.message });
             } finally {
