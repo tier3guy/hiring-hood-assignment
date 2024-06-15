@@ -21,21 +21,25 @@ export default function Sidebar() {
             label: "Dashboard",
             path: "/",
             icon: CloudRainWind,
+            disabled: false,
         },
         {
             label: "Map",
             path: "/map",
             icon: Map,
+            disabled: true,
         },
         {
             label: "Saved Location",
             path: "/saved-location",
             icon: MapPinned,
+            disabled: true,
         },
         {
             label: "Calendar",
             path: "/calendar",
             icon: CalendarCheck2,
+            disabled: true,
         },
     ];
 
@@ -45,11 +49,11 @@ export default function Sidebar() {
                 <div className="border-b-2 p-4 flex items-center gap-3">
                     <Image src={Logo} alt="logo" width={30} height={30} />
                     <h1 className="text-3xl font-semibold text-prime">
-                        weather
+                        weatherrr
                     </h1>
                 </div>
                 <div className="flex flex-col gap-1 my-4">
-                    {tabs.map(({ path, icon: Icon, label }) => {
+                    {tabs.map(({ path, icon: Icon, label, disabled }) => {
                         return (
                             <Link
                                 href={path}
@@ -58,7 +62,8 @@ export default function Sidebar() {
                                     "flex items-center gap-3 hover:bg-gray-200 px-6 py-2",
                                     pathname === path
                                         ? "text-prime"
-                                        : "text-gray-500"
+                                        : "text-gray-500",
+                                    disabled ? "cursor-not-allowed" : ""
                                 )}
                             >
                                 <Icon className="h-5 w-5" />

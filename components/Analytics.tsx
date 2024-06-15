@@ -11,7 +11,7 @@ export default function Analytics() {
 
     return (
         <div
-            className="h-full overflow-y-auto overflow-x-hidden w-1/3 p-6"
+            className="p-6 pt-10 md:pt-6"
             style={{
                 background:
                     "linear-gradient(to top, #1e3c72 0%, #1e3c72 1%, #2a5298 100%)",

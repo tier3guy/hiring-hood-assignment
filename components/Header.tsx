@@ -2,6 +2,7 @@ import NotificationButton from "@/components/Buttons/NotificationButton";
 import UserButton from "@/components/Buttons/UserButton";
 import SearchBar from "@/components/Searchbar";
 import DateComponent from "./Date";
+import NavButton from "./Buttons/NavButton";
 
 export default function Header() {
     return (
@@ -11,6 +12,7 @@ export default function Header() {
                 <SearchBar />
                 <NotificationButton />
                 <UserButton />
+                <NavButton />
             </div>
         </div>
     );
