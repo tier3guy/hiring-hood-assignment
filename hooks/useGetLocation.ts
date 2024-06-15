@@ -1,21 +1,18 @@
 import { useState, useEffect } from "react";
 import { useGeolocated } from "react-geolocated";
-
-interface LocationError {
-    message: string;
-}
+import { ErrorType } from "@/types/error";
 
 export default function useGetLocation() {
     const { coords, isGeolocationAvailable, isGeolocationEnabled } =
         useGeolocated({
             positionOptions: {
-                enableHighAccuracy: false,
+                enableHighAccuracy: true,
             },
             userDecisionTimeout: 1000,
         });
 
     const [loading, setLoading] = useState(true);
-    const [error, setError] = useState<LocationError | null>(null);
+    const [error, setError] = useState<ErrorType | null>(null);
     const [data, setData] = useState<any>(null);
 
     useEffect(() => {

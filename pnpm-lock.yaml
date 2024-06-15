@@ -11,6 +11,9 @@ dependencies:
   clsx:
     specifier: ^2.1.1
     version: 2.1.1
+  country-timezone:
+    specifier: ^1.0.8
+    version: 1.0.8
   date-fns:
     specifier: ^3.6.0
     version: 3.6.0
@@ -956,6 +959,10 @@ packages:
   /concat-map@0.0.1:
     resolution: {integrity: sha512-/Srv4dswyQNBfohGpz9o6Yb3Gz3SrUDqBH5rTuhGR7ahtlbYKnVxw2bCFMRljaA7EXHaXZ8wsHdodFvbkhKmqg==}
     dev: true
+
+  /country-timezone@1.0.8:
+    resolution: {integrity: sha512-TkCxa4rMXYZA+BNMW5Nl7jUNLppdqvhKi1FJsvrC6jcRakdrspoyjqyWt4X+udgyCaEvaJq+0ChyFdeEsJL0KQ==}
+    dev: false
 
   /cross-spawn@7.0.3:
     resolution: {integrity: sha512-iRDPJKUPVEND7dHPO8rkbOnPpyDygcDFtWjpeWNCgy8WP2rXcxXL8TskReQl6OrB2G7+UJrags1q15Fudc7G6w==}

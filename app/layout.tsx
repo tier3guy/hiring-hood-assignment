@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Sidebar from "../components/Sidebar";
 import Analytics from "../components/Analytics";
+import WeatherDataProvider from "@/providers/WeatherDataProvider";
 
 const font = Inter({ subsets: ["latin"], weight: "400" });
 
@@ -18,21 +19,23 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
-            <body className={font.className}>
-                <div className="h-screen w-screen overflow-hidden flex">
-                    <div className="h-full w-1/5">
-                        <Sidebar />
-                    </div>
-                    <div className="h-full flex-1 overflow-y-auto">
-                        <div className="flex h-full w-full flex-1 overflow-hidden">
-                            <div className="h-full flex-1 overflow-y-auto">
-                                {children}
+            <WeatherDataProvider>
+                <body className={font.className}>
+                    <div className="h-screen w-screen overflow-hidden flex">
+                        <div className="h-full w-1/5">
+                            <Sidebar />
+                        </div>
+                        <div className="h-full flex-1 overflow-y-auto">
+                            <div className="flex h-full w-full flex-1 overflow-hidden">
+                                <div className="h-full flex-1 overflow-y-auto">
+                                    {children}
+                                </div>
+                                <Analytics />
                             </div>
-                            <Analytics />
                         </div>
                     </div>
-                </div>
-            </body>
+                </body>
+            </WeatherDataProvider>
         </html>
     );
 }

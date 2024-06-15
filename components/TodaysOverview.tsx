@@ -1,7 +1,13 @@
+"use client";
+
 import OverviewCard from "@/components/Cards/OverviewCard";
-import { ArrowUpRight, CloudHail, Sun, Tornado, Wind } from "lucide-react";
+import { useWeatherData } from "@/providers/WeatherDataProvider";
+import { ArrowUpRight, CloudSun, Sun, Tornado, Wind } from "lucide-react";
 
 export default function TodaysOverview() {
+    const { loading, data } = useWeatherData();
+
+    if (loading) return <p>Loading...</p>;
     return (
         <div className="p-6">
             <div>
@@ -22,30 +28,30 @@ export default function TodaysOverview() {
                     <OverviewCard
                         icon={Wind}
                         label={"Wind Speed"}
-                        value={"12Km/h"}
+                        value={data?.wind?.speed + " Km/h"}
                         movement={"DOWN"}
                         movementBy={"2Km/h"}
                     />
                     <OverviewCard
-                        icon={CloudHail}
-                        label={"Rain Chance"}
-                        value={"24%"}
+                        icon={CloudSun}
+                        label={"Cloudiness"}
+                        value={data?.clouds?.all + "%"}
                         movement={"UP"}
                         movementBy={"10%"}
                     />
                     <OverviewCard
                         icon={Tornado}
                         label={"Pressue"}
-                        value={"720 hpa"}
+                        value={data?.main?.pressure + " hpa"}
                         movement={"UP"}
                         movementBy={"32 hpa"}
                     />
                     <OverviewCard
                         icon={Sun}
-                        label={"UV Index"}
-                        value={"2,3"}
+                        label={"Humidity"}
+                        value={data?.main?.humidity}
                         movement={"DOWN"}
-                        movementBy={"0,3"}
+                        movementBy={"4"}
                     />
                 </div>
             </div>

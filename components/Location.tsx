@@ -1,9 +1,11 @@
 "use client";
 
 import useGetLocation from "@/hooks/useGetLocation";
+import { useWeatherData } from "@/providers/WeatherDataProvider";
 
 export default function Location() {
     const { notAvailable, data, loading } = useGetLocation();
+    const { data: dt } = useWeatherData();
 
     return (
         <div className="flex flex-col gap-1">
@@ -15,7 +17,7 @@ export default function Location() {
                     ? "Loading..."
                     : notAvailable
                     ? "Cannot Locate You"
-                    : `${data?.locality}, ${data?.city}`}
+                    : `${dt?.name}, ${data?.city}`}
             </h2>
             <p className="text-sm text-gray-300 w-3/4" suppressHydrationWarning>
                 {loading

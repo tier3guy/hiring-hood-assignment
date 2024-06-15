@@ -1,9 +1,14 @@
+"use client";
 import Clock from "./Clock";
 import Location from "./Location";
 import Temperature from "./Temperature";
 import RainParameters from "./RainParameter";
+import SunriseSunsetCard from "./Cards/SunriseSunsetCard";
+import { useWeatherData } from "@/providers/WeatherDataProvider";
 
 export default function Analytics() {
+    const { data } = useWeatherData();
+
     return (
         <div
             className="h-full overflow-y-auto overflow-x-hidden w-1/3 p-6"
@@ -19,6 +24,17 @@ export default function Analytics() {
 
             <Temperature />
             <RainParameters />
+
+            <div>
+                <p className="text-gray-300 text-xl">Sunrise & Sunset</p>
+                <div className="flex flex-col gap-4 mt-6">
+                    <SunriseSunsetCard
+                        type="SUNRISE"
+                        time={data?.sys?.sunrise}
+                    />
+                    <SunriseSunsetCard type="SUNSET" time={data?.sys?.sunset} />
+                </div>
+            </div>
         </div>
     );
 }
