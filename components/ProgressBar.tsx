@@ -1,9 +1,16 @@
+"use client";
+import { useWeatherData } from "@/providers/WeatherDataProvider";
+import { Skeleton } from "./ui/skeleton";
+
 interface Props {
     time: string;
     value: number;
 }
 
 export default function ProgressBar({ time, value }: Props) {
+    const { loading } = useWeatherData();
+    if (loading)
+        return <Skeleton className="py-4 rounded-full w-full bg-white/10" />;
     return (
         <div className="flex items-center justify-between text-gray-300">
             <div className="flex items-center flex-1">
