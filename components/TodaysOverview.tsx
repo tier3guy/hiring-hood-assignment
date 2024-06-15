@@ -6,8 +6,6 @@ import { ArrowUpRight, CloudSun, Sun, Tornado, Wind } from "lucide-react";
 
 export default function TodaysOverview() {
     const { loading, data } = useWeatherData();
-
-    if (loading) return <p>Loading...</p>;
     return (
         <div className="p-6">
             <div>
@@ -31,6 +29,7 @@ export default function TodaysOverview() {
                         value={data?.wind?.speed + " Km/h"}
                         movement={"DOWN"}
                         movementBy={"2Km/h"}
+                        loading={loading}
                     />
                     <OverviewCard
                         icon={CloudSun}
@@ -38,6 +37,7 @@ export default function TodaysOverview() {
                         value={data?.clouds?.all + "%"}
                         movement={"UP"}
                         movementBy={"10%"}
+                        loading={loading}
                     />
                     <OverviewCard
                         icon={Tornado}
@@ -45,6 +45,7 @@ export default function TodaysOverview() {
                         value={data?.main?.pressure + " hpa"}
                         movement={"UP"}
                         movementBy={"32 hpa"}
+                        loading={loading}
                     />
                     <OverviewCard
                         icon={Sun}
@@ -52,6 +53,7 @@ export default function TodaysOverview() {
                         value={data?.main?.humidity}
                         movement={"DOWN"}
                         movementBy={"4"}
+                        loading={loading}
                     />
                 </div>
             </div>

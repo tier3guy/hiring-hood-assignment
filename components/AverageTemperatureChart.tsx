@@ -1,7 +1,12 @@
+"use client";
+
+import { useWeatherData } from "@/providers/WeatherDataProvider";
 import CustomLineChart from "./Linechart";
-import { ArrowUpRight, CloudHail, Sun, Tornado, Wind } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 
 export default function AverageTemperatureChart() {
+    const { loading } = useWeatherData();
+
     return (
         <div className="p-6">
             <div>
@@ -18,7 +23,7 @@ export default function AverageTemperatureChart() {
                     </div>
                 </div>
                 <div className="mt-6">
-                    <CustomLineChart />
+                    <CustomLineChart loading={loading} />
                 </div>
             </div>
         </div>

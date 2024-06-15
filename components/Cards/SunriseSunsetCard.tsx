@@ -1,13 +1,20 @@
-import { format, differenceInHours, getHours, getMinutes } from "date-fns";
+import { format, getHours, getMinutes } from "date-fns";
 import { Sunrise, Sunset } from "lucide-react";
+import { Skeleton } from "@/components/ui/skeleton";
 
 interface Props {
     type: "SUNRISE" | "SUNSET";
     time: number | undefined; // ISO format date string
+    loading?: boolean;
 }
 
-export default function SunriseSunsetCard({ type, time }: Props) {
-    if (!time) return <p>Loading ...</p>;
+export default function SunriseSunsetCard({
+    type,
+    time,
+    loading = true,
+}: Props) {
+    if (!time || loading)
+        return <Skeleton className="flex-1 rounded-none bg-white/10 py-10" />;
 
     const Icon = type === "SUNRISE" ? Sunrise : Sunset;
     const label = type === "SUNRISE" ? "Sunrise" : "Sunset";

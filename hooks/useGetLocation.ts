@@ -34,8 +34,6 @@ export default function useGetLocation() {
 
         if (coords) {
             fetchLocation(coords.latitude, coords.longitude);
-        } else {
-            setLoading(false);
         }
     }, [coords]);
 

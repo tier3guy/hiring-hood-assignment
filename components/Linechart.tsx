@@ -9,6 +9,8 @@ import {
     Area,
     ResponsiveContainer,
 } from "recharts";
+import { Skeleton } from "./ui/skeleton";
+
 const data = [
     {
         name: "Week 1",
@@ -28,7 +30,16 @@ const data = [
     },
 ];
 
-export default function CustomLineChart() {
+interface Props {
+    loading?: boolean;
+}
+
+export default function CustomLineChart({ loading }: Props) {
+    if (loading)
+        return (
+            <Skeleton className="bg-grayish border h-[300px] rounded-none" />
+        );
+
     return (
         <ResponsiveContainer
             width="100%"
@@ -55,9 +66,7 @@ export default function CustomLineChart() {
                 </defs>
                 <XAxis dataKey="name" />
                 <YAxis domain={[10, 50]} />
-                {/* <CartesianGrid
-                //  strokeDasharray="3 3"
-                /> */}
+                <CartesianGrid strokeDasharray="3 3" />
                 <Tooltip />
                 <Area
                     type="bump"

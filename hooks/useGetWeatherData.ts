@@ -46,8 +46,6 @@ export default function useGetWeatherData() {
 
         if (coords) {
             fetchLocation(coords.latitude, coords.longitude);
-        } else {
-            setLoading(false);
         }
     }, [coords]);
 

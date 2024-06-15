@@ -7,7 +7,7 @@ import SunriseSunsetCard from "./Cards/SunriseSunsetCard";
 import { useWeatherData } from "@/providers/WeatherDataProvider";
 
 export default function Analytics() {
-    const { data } = useWeatherData();
+    const { data, loading } = useWeatherData();
 
     return (
         <div
@@ -31,8 +31,13 @@ export default function Analytics() {
                     <SunriseSunsetCard
                         type="SUNRISE"
                         time={data?.sys?.sunrise}
+                        loading={loading}
                     />
-                    <SunriseSunsetCard type="SUNSET" time={data?.sys?.sunset} />
+                    <SunriseSunsetCard
+                        type="SUNSET"
+                        time={data?.sys?.sunset}
+                        loading={loading}
+                    />
                 </div>
             </div>
         </div>

@@ -1,9 +1,11 @@
 "use client";
 import { useState, useEffect } from "react";
 import { format } from "date-fns";
+import { useWeatherData } from "@/providers/WeatherDataProvider";
 
 export default function Clock() {
     const [time, setTime] = useState(new Date());
+    const { loading } = useWeatherData();
 
     useEffect(() => {
         const timer = setInterval(() => {
@@ -13,6 +15,7 @@ export default function Clock() {
         return () => clearInterval(timer);
     }, []);
 
+    if (loading) return null;
     return (
         <div>
             <p className="text-xl text-gray-300 font-semibold text-end">

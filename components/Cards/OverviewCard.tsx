@@ -1,4 +1,5 @@
 import { ChevronDown, ChevronUp, LucideProps } from "lucide-react";
+import { Skeleton } from "@/components/ui/skeleton";
 
 interface Props {
     icon: React.ForwardRefExoticComponent<
@@ -8,6 +9,7 @@ interface Props {
     value: string;
     movement: "UP" | "DOWN";
     movementBy: string;
+    loading?: boolean;
 }
 
 export default function OverviewCard({
@@ -16,7 +18,13 @@ export default function OverviewCard({
     value,
     movement,
     movementBy,
+    loading = true,
 }: Props) {
+    if (loading) {
+        return (
+            <Skeleton className="flex-1 h-[100px] border rounded-none bg-grayish" />
+        );
+    }
     return (
         <div className="flex-1 p-3 bg-grayish flex items-center gap-6 border">
             <div>

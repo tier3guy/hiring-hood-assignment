@@ -2,10 +2,15 @@
 
 import useGetLocation from "@/hooks/useGetLocation";
 import { useWeatherData } from "@/providers/WeatherDataProvider";
+import { Skeleton } from "./ui/skeleton";
 
 export default function Location() {
-    const { notAvailable, data, loading } = useGetLocation();
-    const { data: dt } = useWeatherData();
+    const { data, loading } = useGetLocation();
+    const { data: dt, loading: ld } = useWeatherData();
+
+    if (loading || ld) {
+        return <Skeleton className="py-4 bg-white/10 rounded-none w-full" />;
+    }
 
     return (
         <div className="flex flex-col gap-1">
@@ -13,18 +18,11 @@ export default function Location() {
                 className="text-2xl font-semibold text-gray-100"
                 suppressHydrationWarning
             >
-                {loading
-                    ? "Loading..."
-                    : notAvailable
-                    ? "Cannot Locate You"
-                    : `${dt?.name}, ${data?.city}`}
+                {dt?.name}, {data?.city}
             </h2>
+
             <p className="text-sm text-gray-300 w-3/4" suppressHydrationWarning>
-                {loading
-                    ? "Loading..."
-                    : notAvailable
-                    ? "This could be either beacuse your browser does not support geolocation or you do not have given the required persmission"
-                    : `${data?.principalSubdivision}, ${data?.countryName}`}
+                {data?.principalSubdivision}, {data?.countryName}
             </p>
         </div>
     );
