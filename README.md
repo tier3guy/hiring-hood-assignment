@@ -1,36 +1,71 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+### Weather Application README
 
-## Getting Started
+#### Overview
 
-First, run the development server:
+This Weather Application is a project developed using modern web technologies as an assignment for Hiring Hood Company. It utilizes geolocation services and the OpenWeather API to fetch real-time weather data. The frontend is built using Next.js, Shadcn, Tailwind CSS, and TypeScript. External packages like Recharts and react-geolocated are integrated to enhance functionality and user experience.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+#### Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+-   **Real-time Weather Data:** Fetches current weather information based on the user's location using the OpenWeather API.
+-   **Geolocation Services:** Utilizes react-geolocated for precise location detection of the user.
+-   **Interactive Charts:** Displays weather trends using Recharts to visualize data such as temperature, humidity, and wind speed over time.
+-   **Responsive Design:** Implemented with Tailwind CSS for a mobile-first approach, ensuring the application is accessible on various devices.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+#### Technologies Used
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+-   **Frontend Framework:** Next.js
+-   **CSS Framework:** Tailwind CSS
+-   **Styling:** Shadcn for enhanced design capabilities
+-   **Type Checking:** TypeScript
+-   **Charting:** Recharts for data visualization
+-   **Geolocation:** react-geolocated for location services
 
-## Learn More
+#### Installation and Setup
 
-To learn more about Next.js, take a look at the following resources:
+1. Clone the repository from GitHub:
+    ```
+    git clone https://github.com/your/repository.git
+    ```
+2. Navigate into the project directory:
+    ```
+    cd weather-application
+    ```
+3. Install dependencies:
+    ```
+    npm install
+    ```
+4. Obtain an API key from OpenWeather and configure it in your environment variables.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+5. Start the development server:
+    ```
+    npm run dev
+    ```
+6. Open your browser and navigate to `http://localhost:3000` to use the application.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+#### Usage
 
-## Deploy on Vercel
+1. **Allow Location Access:** Upon loading, the application will request permission to access your current location.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+2. **View Weather Information:** Once location access is granted, the application fetches and displays real-time weather data for your current location.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+#### Project Structure
+
+-   **app/**: Contains Next.js pages (e.g., page.tsx for the main application).
+-   **components/**: Reusable React components used throughout the application.
+-   **public/**: Static assets and favicon.
+
+#### API Usage
+
+-   **OpenWeather API:** The application makes HTTP requests to the OpenWeather API to retrieve weather data. Ensure you have an API key and configure it securely.
+
+#### Credits
+
+-   **Developed By:** Avinash Gupta
+
+#### License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+#### Contact
+
+For any inquiries or feedback regarding this Weather Application, please contact avinashgupta.works@gmail.com
