@@ -29,6 +29,9 @@ export async function POST(request: NextRequest) {
             },
         };
         const resp = await fetch(url, options);
+
+        console.log(resp);
+
         const data = await resp.json();
 
         return NextResponse.json(
